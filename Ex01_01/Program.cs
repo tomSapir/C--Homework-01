@@ -12,7 +12,6 @@ namespace Ex01_01
         {
             string[] numStrBinaryArr = new string[3];
             string[] numStrDecArr = new string[3];
-
             int avgZeros, avgOnes;
 
             Console.WriteLine("Please enter 3 binary numbers: ");
@@ -119,7 +118,7 @@ namespace Ex01_01
             return res;
         }
 
-        private static int amountOfNumsPalindrom(string[] i_NumStrDecArr)
+        private static int amountOfNumbersPalindrom(string[] i_NumStrDecArr)
         {
             int res = 0;
 
@@ -176,22 +175,25 @@ namespace Ex01_01
 
         private static void printIntputStats(string[] i_NumStrBinaryArr, string[] i_NumStrDecArr)
         {
+            StringBuilder stringBuilder = new StringBuilder();
             int avgZeros, avgOnes;
+            
             calAvgZerosAndOnes(i_NumStrBinaryArr, out avgZeros, out avgOnes);
-
-            Console.WriteLine("The number in decimal: ");
+            stringBuilder.Append("The number in decimal: ").AppendLine();
 
             for (int i = 0; i < i_NumStrDecArr.Length; i++)
             {
-                Console.WriteLine(i_NumStrDecArr[i]);
+                stringBuilder.Append(i_NumStrDecArr[i]).AppendLine();
             }
 
-            Console.WriteLine("Average of zeros: " + avgZeros);
-            Console.WriteLine("Average of ones: " + avgOnes);
-            Console.WriteLine("Amount of numbers that power of 2: " + amountOfNumsPowOf2(i_NumStrBinaryArr));
-            Console.WriteLine("Amount of numbers that are palindrom: " + amountOfNumsPalindrom(i_NumStrDecArr));
-            Console.WriteLine("Minimum number: " + findMin(i_NumStrDecArr));
-            Console.WriteLine("Maximum number: " + findMax(i_NumStrDecArr));
+            stringBuilder.Append("Average of zeros: ").Append(avgZeros).AppendLine();
+            stringBuilder.Append("Average of ones: ").Append(avgOnes).AppendLine();
+            stringBuilder.Append("Amount of numbers that power of 2: ").Append(amountOfNumsPowOf2(i_NumStrBinaryArr)).AppendLine();
+            stringBuilder.Append("Amount of numbers that are palindrom: ").Append(amountOfNumbersPalindrom(i_NumStrDecArr)).AppendLine();
+            stringBuilder.Append("Minimum number: ").Append(findMin(i_NumStrDecArr)).AppendLine();
+            stringBuilder.Append("Maximum number: ").Append(findMax(i_NumStrDecArr)).AppendLine();
+
+            Console.WriteLine(stringBuilder);
         }
     }
 }
