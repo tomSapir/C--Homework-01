@@ -39,6 +39,7 @@ namespace Ex01_01
             convertBinStrNumsToStrDec(numStrBinaryArr, numStrDecArr);
 
             printIntputStats(numStrBinaryArr, numStrDecArr);
+
         }
 
         private static bool checkIfValidInput(string i_NumStr)
