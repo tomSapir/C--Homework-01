@@ -12,7 +12,6 @@ namespace Ex01_01
         {
             string[] numStrBinaryArr = new string[3];
             string[] numStrDecArr = new string[3];
-            int avgZeros, avgOnes;
 
             Console.WriteLine("Please enter 3 binary numbers: ");
 
@@ -69,16 +68,16 @@ namespace Ex01_01
             }
         }
 
-        private static void calAvgZerosAndOnes(string[] i_numStrBinaryArr, out int o_AvgZeros, out int o_AvgOnes)
+        private static void calAvgZerosAndOnes(string[] i_NumStrBinaryArr, out int o_AvgZeros, out int o_AvgOnes)
         {
             o_AvgZeros = 0;
             o_AvgOnes = 0;
 
-            for (int i = 0; i < i_numStrBinaryArr.Length; i++)
+            for (int i = 0; i < i_NumStrBinaryArr.Length; i++)
             {
-                for (int j = 0; j < i_numStrBinaryArr[i].Length; j++)
+                for (int j = 0; j < i_NumStrBinaryArr[i].Length; j++)
                 {
-                    if (i_numStrBinaryArr[i][j] == '0')
+                    if (i_NumStrBinaryArr[i][j] == '0')
                     {
                         o_AvgZeros++;
                     }
@@ -89,64 +88,84 @@ namespace Ex01_01
                 }
             }
 
-            o_AvgOnes /= i_numStrBinaryArr.Length;
-            o_AvgZeros /= i_numStrBinaryArr.Length;
+            o_AvgOnes /= i_NumStrBinaryArr.Length;
+            o_AvgZeros /= i_NumStrBinaryArr.Length;
         }
 
         private static int amountOfNumsPowOf2(string[] i_NumStrBinaryArr)
         {
-            int res = 0;
-
+            int amountOfNumThatPowOf2 = 0;
             for (int i = 0; i < i_NumStrBinaryArr.Length; i++)
             {
-                int numOfOnesInCurrNum = 0;
-
-                for (int j = 0; j < i_NumStrBinaryArr[i].Length; j++)
+                if(checkIfNumIsPowOf2(i_NumStrBinaryArr[i]))
                 {
-                    if (i_NumStrBinaryArr[i][j] == '1')
-                    {
-                        numOfOnesInCurrNum++;
-                    }
-                }
-
-                if (numOfOnesInCurrNum == 1)
-                {
-                    res++;
+                    amountOfNumThatPowOf2++;
                 }
             }
 
-            return res;
+            return amountOfNumThatPowOf2;
+        }
+
+        private static bool checkIfNumIsPowOf2(string i_NumToCheck)
+        {
+            int numOfOnes = 0;
+            bool isPowOf2 = true;
+            for(int i = 0; i < i_NumToCheck.Length; i++)
+            {
+                if(i_NumToCheck[i] == '1')
+                {
+                    numOfOnes++;
+                }
+            }
+
+            if(numOfOnes != 1)
+            {
+                isPowOf2 = false;
+            }
+
+            return isPowOf2;
         }
 
         private static int amountOfNumbersPalindrom(string[] i_NumStrDecArr)
         {
-            int res = 0;
-
+            int amountOfPalindroms = 0;
             for (int i = 0; i < i_NumStrDecArr.Length; i++)
             {
-                int leftIndex = 0;
-                int rightIndex = i_NumStrDecArr[i].Length - 1;
-
-                while (i_NumStrDecArr[i][leftIndex] == i_NumStrDecArr[i][rightIndex])
+                if(checkIfStrIsPalindrom(i_NumStrDecArr[i]))
                 {
-                    leftIndex++;
-                    rightIndex--;
-
-                    if (leftIndex >= rightIndex)
-                    {
-                        res++;
-                        break;
-                    }
+                    amountOfPalindroms++;
                 }
             }
 
-            return res;
+            return amountOfPalindroms;
+        }
+
+        private static bool checkIfStrIsPalindrom(string i_Str)
+        {
+            bool isPalindromFlag;
+
+            if (i_Str.Length <= 1)
+            {
+                isPalindromFlag = true;
+            }
+            else
+            {
+                if (i_Str[0] != i_Str[i_Str.Length - 1])
+                {
+                    isPalindromFlag = false;
+                }
+                else
+                {
+                    isPalindromFlag = checkIfStrIsPalindrom(i_Str.Substring(1, i_Str.Length - 2));
+                }
+            }
+
+            return isPalindromFlag;
         }
 
         private static int findMax(string[] i_NumStrDecArr)
         {
             int max = int.Parse(i_NumStrDecArr[0]);
-            
             for(int i = 1; i < i_NumStrDecArr.Length; i++)
             {
                 if(int.Parse(i_NumStrDecArr[i]) > max)
@@ -161,7 +180,6 @@ namespace Ex01_01
         private static int findMin(string[] i_NumStrDecArr)
         {
             int min = int.Parse(i_NumStrDecArr[0]);
-
             for (int i = 1; i < i_NumStrDecArr.Length; i++)
             {
                 if (int.Parse(i_NumStrDecArr[i]) < min)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex01_04
 {
-    internal class Program
+    class Program
     {
         static void Main()
         {
@@ -84,12 +84,9 @@ namespace Ex01_04
         private static bool checkIfStringContainsOnlyEnglishLetters(string i_InputStr)
         {
             bool res = true;
-
             for (int i = 0; i < i_InputStr.Length; i++)
             {
-                if ( (i_InputStr[i] < 'A') ||
-                    ( (i_InputStr[i] > 'Z') && (i_InputStr[i] < 'a') )
-                    || (i_InputStr[i] > 'z'))
+                if ((i_InputStr[i] < 'A') || ((i_InputStr[i] > 'Z') && (i_InputStr[i] < 'a')) || (i_InputStr[i] > 'z'))
                 {
                     res = false;
                 }
@@ -98,11 +95,9 @@ namespace Ex01_04
             return res;
         }
 
-
         private static bool checkIfStringContainsOnlyNumbers(string i_InputStr)
         {
             bool res = true;
-
             for(int i = 0; i < i_InputStr.Length; i++)
             {
                 if(!char.IsDigit(i_InputStr[i]))
@@ -114,10 +109,9 @@ namespace Ex01_04
             return res;
         }
 
-
         private static bool checkIfStrIsPalindrom(string i_InputStr)
         {
-            bool isPalindromFlag = true;
+            bool isPalindromFlag;
 
             if (i_InputStr.Length <= 1)
             {
@@ -140,8 +134,15 @@ namespace Ex01_04
 
         private static bool checkIfStrIsNum(string i_InputStr)
         {
-            int n;
-            bool isNum = int.TryParse(i_InputStr, out n);
+            bool isNum = true;
+            for(int i = 0; i < i_InputStr.Length; i++)
+            {
+                if(i_InputStr[i] < '0' || i_InputStr[i] > '9')
+                {
+                    isNum = false;
+                    break;
+                }
+            }
             
             return isNum;
         }
@@ -157,7 +158,6 @@ namespace Ex01_04
         private static int calAmountOfLowercaseLetters(string i_InputStr)
         {
             int amountOfSmallLetters = 0;
-
             for (int i = 0; i < i_InputStr.Length; i++)
             {
                 if(char.IsLower(i_InputStr[i]))
@@ -168,7 +168,5 @@ namespace Ex01_04
 
             return amountOfSmallLetters;
         }
-
-
     }
 }
