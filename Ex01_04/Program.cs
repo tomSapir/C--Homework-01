@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Ex01_01;
+
 namespace Ex01_04
 {
     class Program
@@ -13,10 +15,9 @@ namespace Ex01_04
             string inputStr;
             int amountOfSmallLetters;
 
-            Console.WriteLine("Please enter 8 digit string: ");
-            inputStr = readStr();
+            inputStr = readString();
 
-            if (checkIfStrIsPalindrom(inputStr))
+            if (Ex01_01.Program.CheckIfStrIsPalindrom(inputStr))
             {
                 Console.WriteLine("The string is palindrom.");
             }
@@ -44,16 +45,18 @@ namespace Ex01_04
             }
         }
 
-        private static string readStr()
+        private static string readString()
         {
             bool strIsValid = false;
             string inputStr = "";
+
+            Console.WriteLine("Please enter 8 digit string: ");
 
             while (!strIsValid)
             {
                 inputStr = Console.ReadLine();
 
-                if (checkIfStrIsValid(inputStr))
+                if (checkIfInputStringIsValid(inputStr))
                 {
                     strIsValid = true;
                 }
@@ -66,70 +69,42 @@ namespace Ex01_04
             return inputStr;
         }
 
-        private static bool checkIfStrIsValid(string i_InputStr)
+        private static bool checkIfInputStringIsValid(string i_InputStr)
         {
             bool isLength8 = (i_InputStr.Length == 8);
-            bool isEnglish = checkIfStringContainsOnlyEnglishLetters(i_InputStr);
-            bool isNumber = checkIfStringContainsOnlyNumbers(i_InputStr);
-            bool strIsValidFlag = true;
+            bool isOnlyEnglishLetters = checkIfStringContainsOnlyEnglishLetters(i_InputStr);
+            bool isOnlyDigits = checkIfStringContainsOnlyDigits(i_InputStr);
+            bool inputStringIsValid = isLength8 && (isOnlyDigits || isOnlyEnglishLetters);
 
-            if (!isLength8 ||  (!isNumber && !isEnglish))
-            {
-                strIsValidFlag = false;
-            }
-
-            return strIsValidFlag;
+            return inputStringIsValid;
         }
 
         private static bool checkIfStringContainsOnlyEnglishLetters(string i_InputStr)
         {
-            bool res = true;
+            bool isStringContainsOnlyEnglishLetters = true;
             for (int i = 0; i < i_InputStr.Length; i++)
             {
                 if ((i_InputStr[i] < 'A') || ((i_InputStr[i] > 'Z') && (i_InputStr[i] < 'a')) || (i_InputStr[i] > 'z'))
                 {
-                    res = false;
+                    isStringContainsOnlyEnglishLetters = false;
                 }
             }
 
-            return res;
+            return isStringContainsOnlyEnglishLetters;
         }
 
-        private static bool checkIfStringContainsOnlyNumbers(string i_InputStr)
+        private static bool checkIfStringContainsOnlyDigits(string i_InputStr)
         {
-            bool res = true;
-            for(int i = 0; i < i_InputStr.Length; i++)
+            bool isStringContainsOnlyDigits = true;
+            for (int i = 0; i < i_InputStr.Length; i++)
             {
-                if(!char.IsDigit(i_InputStr[i]))
+                if (!char.IsDigit(i_InputStr[i]))
                 {
-                    res = false;
+                    isStringContainsOnlyDigits = false;
                 }
             }
 
-            return res;
-        }
-
-        private static bool checkIfStrIsPalindrom(string i_InputStr)
-        {
-            bool isPalindromFlag;
-
-            if (i_InputStr.Length <= 1)
-            {
-                isPalindromFlag = true;
-            }
-            else
-            {
-                if (i_InputStr[0] != i_InputStr[i_InputStr.Length - 1])
-                {
-                    isPalindromFlag = false;
-                }
-                else
-                {
-                    isPalindromFlag = checkIfStrIsPalindrom(i_InputStr.Substring(1, i_InputStr.Length - 2));
-                }
-            }
-
-            return isPalindromFlag;
+            return isStringContainsOnlyDigits;
         }
 
         private static bool checkIfStrIsNum(string i_InputStr)

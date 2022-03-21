@@ -37,21 +37,9 @@ namespace Ex01_o3
 
         private static bool checkIfInputIsValid(string i_InputHeight)
         {
-            bool isValid = true;
             int n;
             bool isNumeric = int.TryParse( i_InputHeight, out n);
-
-            if(!isNumeric)
-            {
-                isValid = false;
-            }
-            else
-            {
-                if(i_InputHeight[0] == '-')
-                {
-                    isValid = false;
-                }
-            }
+            bool isValid = (isNumeric && (i_InputHeight[0] != '-'));
 
             return isValid;
         }

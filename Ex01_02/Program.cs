@@ -10,7 +10,7 @@ namespace Ex01_02
     {
         static void Main()
         {
-            PrintSandClock(6);
+            PrintSandClock(5);
         }
 
         public static void PrintSandClock(int i_Height)
@@ -42,12 +42,12 @@ namespace Ex01_02
 
         private static void convertHeightToOddIfNeed(ref int io_Height)
         {
-            if(checkIfEven(io_Height))
+            if(checkNumberIfEven(io_Height))
             {
                 io_Height++;
             }
         }
-        private static bool checkIfEven(int i_Num)
+        private static bool checkNumberIfEven(int i_Num)
         {
             bool isEven = ((i_Num % 2) == 0);
 
