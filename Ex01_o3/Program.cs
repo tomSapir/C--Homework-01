@@ -32,7 +32,8 @@ namespace Ex01_o3
             }
 
             inputHeightInt = int.Parse(inputHeightStr);
-            Ex01_02.Program.PrintSandClock(inputHeightInt);
+            convertHeightToOddIfNeed(ref inputHeightInt);
+            Ex01_02.Program.PrintSandClock(inputHeightInt, inputHeightInt, 0);
         }
 
         private static bool checkIfInputIsValid(string i_InputHeight)
@@ -42,6 +43,20 @@ namespace Ex01_o3
             bool isValid = (isNumeric && (i_InputHeight[0] != '-'));
 
             return isValid;
+        }
+
+        private static void convertHeightToOddIfNeed(ref int io_Height)
+        {
+            if (checkNumberIfEven(io_Height))
+            {
+                io_Height++;
+            }
+        }
+        private static bool checkNumberIfEven(int i_Num)
+        {
+            bool isEven = ((i_Num % 2) == 0);
+
+            return isEven;
         }
     }
 }
