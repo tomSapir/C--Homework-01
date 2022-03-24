@@ -14,15 +14,15 @@ namespace Ex01_01
             string decNumAsStr1, decNumAsStr2, decNumAsStr3;
             int decNumAsInt1, decNumAsInt2, decNumAsInt3;
             int avgZeros, avgOnes;
-            int amountOfNumbThatPowOf2;
-            int amountOfNumsThatPalindroms;
+            int amountOfNumbersThatPowOf2;
+            int amountOfNumbersThatPalindroms;
             int minNumber, maxNumber;
 
             readBinariesNumbers(out binNumAsStr1, out binNumAsStr2, out binNumAsStr3);
             convertBinariesStringsToDecStrings(binNumAsStr1, binNumAsStr2, binNumAsStr3, out decNumAsStr1, out decNumAsStr2, out decNumAsStr3);
             convertDecStringsToDecInts(decNumAsStr1, decNumAsStr2, decNumAsStr3, out decNumAsInt1, out decNumAsInt2, out decNumAsInt3);
-            amountOfNumbThatPowOf2 = calAmountOfNumbersThatPowerOf2(binNumAsStr1, binNumAsStr2, binNumAsStr3);
-            amountOfNumsThatPalindroms = calAmountOfPalindromNumbers(decNumAsStr1, decNumAsStr2, decNumAsStr3);
+            amountOfNumbersThatPowOf2 = calAmountOfNumbersThatPowerOf2(binNumAsStr1, binNumAsStr2, binNumAsStr3);
+            amountOfNumbersThatPalindroms = calAmountOfPalindromNumbers(decNumAsStr1, decNumAsStr2, decNumAsStr3);
             minNumber = findMin(decNumAsInt1, decNumAsInt2, decNumAsInt3);
             maxNumber = findMax(decNumAsInt1, decNumAsInt2, decNumAsInt3);
             calAvgZerosAndAvgOnes(binNumAsStr1, binNumAsStr2, binNumAsStr3, out avgZeros, out avgOnes);
@@ -32,8 +32,8 @@ namespace Ex01_01
                 decNumAsStr3,
                 avgZeros,
                 avgOnes,
-                amountOfNumbThatPowOf2,
-                amountOfNumsThatPalindroms,
+                amountOfNumbersThatPowOf2,
+                amountOfNumbersThatPalindroms,
                 minNumber,
                 maxNumber);
         }
@@ -130,7 +130,6 @@ namespace Ex01_01
             o_AvgZeros += calAmountOfZerosInString(i_BinNumAsStr2);
             o_AvgZeros += calAmountOfZerosInString(i_BinNumAsStr3);
             o_AvgZeros /= 3;
-
             o_AvgOnes += calAmountOfOnesInString(i_BinNumAsStr1);
             o_AvgOnes += calAmountOfOnesInString(i_BinNumAsStr2);
             o_AvgOnes += calAmountOfOnesInString(i_BinNumAsStr3);
@@ -168,7 +167,6 @@ namespace Ex01_01
         private static int calAmountOfNumbersThatPowerOf2(string i_BinNumAsStr1, string i_BinNumAsStr2, string i_BinNumAsStr3)
         {
             int amountOfNumsThatPowOf2 = 0;
-
             if(checkIfNumberIsPowerOf2(i_BinNumAsStr1))
             {
                 amountOfNumsThatPowOf2++;
@@ -299,9 +297,7 @@ namespace Ex01_01
             stringBuilder.Append("Amount of numbers that are palindrom: ").Append(i_AmountOfNumbersThatPalindroms).AppendLine();
             stringBuilder.Append("Minimum number: ").Append(i_MinNumber).AppendLine();
             stringBuilder.Append("Maximum number: ").Append(i_MaxNumber).AppendLine();
-
             Console.WriteLine(stringBuilder);
-     
         }
     }
 }

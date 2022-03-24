@@ -51,11 +51,9 @@ namespace Ex01_04
             string inputStr = "";
 
             Console.WriteLine("Please enter 8 digit string: ");
-
             while (!strIsValid)
             {
                 inputStr = Console.ReadLine();
-
                 if (checkIfInputStringIsValid(inputStr))
                 {
                     strIsValid = true;
@@ -82,6 +80,7 @@ namespace Ex01_04
         private static bool checkIfStringContainsOnlyEnglishLetters(string i_InputStr)
         {
             bool isStringContainsOnlyEnglishLetters = true;
+
             for (int i = 0; i < i_InputStr.Length; i++)
             {
                 if ((i_InputStr[i] < 'A') || ((i_InputStr[i] > 'Z') && (i_InputStr[i] < 'a')) || (i_InputStr[i] > 'z'))
@@ -110,6 +109,7 @@ namespace Ex01_04
         private static bool checkIfStrIsNum(string i_InputStr)
         {
             bool isNum = true;
+
             for(int i = 0; i < i_InputStr.Length; i++)
             {
                 if(i_InputStr[i] < '0' || i_InputStr[i] > '9')
@@ -133,6 +133,7 @@ namespace Ex01_04
         private static int calAmountOfLowercaseLetters(string i_InputStr)
         {
             int amountOfSmallLetters = 0;
+
             for (int i = 0; i < i_InputStr.Length; i++)
             {
                 if(char.IsLower(i_InputStr[i]))
