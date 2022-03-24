@@ -19,7 +19,7 @@ namespace Ex01_02
             {
                 printLine(i_CurrAsterisksToPrint, i_CurrSpacesToPrint);
                 PrintSandClock(i_CurrHeight - 1, i_CurrAsterisksToPrint - 2, i_CurrSpacesToPrint + 1);
-                if(i_CurrAsterisksToPrint != 1)
+                if (i_CurrAsterisksToPrint != 1)
                 {
                     printLine(i_CurrAsterisksToPrint, i_CurrSpacesToPrint);
                 }
