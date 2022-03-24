@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace Ex01_05
@@ -13,18 +11,16 @@ namespace Ex01_05
             int minDigit = findMinDigit(inputNumAsStr);
             double avgOfDigits = findAvgOfDigits(inputNumAsStr);
             int amountOfDigitsDevideBy2 = findAmountOfDigitsDivideBy2(inputNumAsStr);
-            int amountOfDigitsLowerThenOnesDigit = findAmountOfDigitsLowerThenOnesDigit(inputNumAsStr);
+            int amountOfDigitsLowerThenOnesDigit = findAmountOfDigitsLowerThenFirstDigit(inputNumAsStr);
 
             printResults(minDigit, avgOfDigits, amountOfDigitsDevideBy2, amountOfDigitsLowerThenOnesDigit);
         }
 
-        private static void printResults(
-            int i_MinDigit,
-            double i_AvgOfDigits,
-            int i_AmountOfDigitsDevideBy2,
-            int i_AmountOfDigitsLowerThenOnesDigits)
+        private static void printResults(int i_MinDigit, double i_AvgOfDigits,
+                                         int i_AmountOfDigitsDevideBy2, int i_AmountOfDigitsLowerThenOnesDigits)
         {
             StringBuilder stringBuilder = new StringBuilder();
+
             stringBuilder.Append("Minimum digit: ").Append(i_MinDigit).AppendLine();
             stringBuilder.Append("Average of digits: ").Append(i_AvgOfDigits).AppendLine();
             stringBuilder.Append("Amount of digits that devide by 2: ").Append(i_AmountOfDigitsDevideBy2).AppendLine();
@@ -32,15 +28,16 @@ namespace Ex01_05
             Console.WriteLine(stringBuilder);
         }
 
-        private static int findAmountOfDigitsLowerThenOnesDigit(string i_InputNumAsStr)
+        private static int findAmountOfDigitsLowerThenFirstDigit(string i_InputNumAsStr)
         {
             int amountOfDigitsLowerThenOnesDigit = 0;
+            int currDigitAsInt;
+            int firstDigitAsInt = int.Parse(i_InputNumAsStr[6].ToString());
 
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
-                int currDigitAsInt = i_InputNumAsStr[i] - '0';
-
-                if(currDigitAsInt < i_InputNumAsStr[6])
+                currDigitAsInt = int.Parse(i_InputNumAsStr[i].ToString());
+                if (currDigitAsInt < firstDigitAsInt)
                 {
                     amountOfDigitsLowerThenOnesDigit++;
                 }
@@ -53,11 +50,11 @@ namespace Ex01_05
         private static int findAmountOfDigitsDivideBy2(string i_InputNumAsStr)
         {
             int amountOfDigitsDevideBy2 = 0;
+            int currDigitAsInt;
 
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
-                int currDigitAsInt = i_InputNumAsStr[0] - '0';
-
+                currDigitAsInt = int.Parse(i_InputNumAsStr[i].ToString());
                 if(currDigitAsInt % 2 == 0)
                 {
                     amountOfDigitsDevideBy2++;
@@ -70,9 +67,9 @@ namespace Ex01_05
         {
             double sumOfDigits = 0;
 
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
-                sumOfDigits += i_InputNumAsStr[i] - '0';
+                sumOfDigits += int.Parse(i_InputNumAsStr[i].ToString());
             }
 
             sumOfDigits /= 7;
@@ -81,13 +78,14 @@ namespace Ex01_05
         }
         private static int findMinDigit(string i_InputNumAsStr)
         {
-            int currMinDigit = i_InputNumAsStr[0] - '0';
+            int currMinDigit = int.Parse(i_InputNumAsStr[0].ToString());
 
             for (int i = 1; i < 7; i++)
             {
-                if(i_InputNumAsStr[i] - '0' < currMinDigit)
+                int currDigitAsInt = int.Parse(i_InputNumAsStr[i].ToString());
+                if(currDigitAsInt < currMinDigit)
                 {
-                    currMinDigit = i_InputNumAsStr[i] - '0';
+                    currMinDigit = currDigitAsInt;
                 }
             }
 
@@ -129,9 +127,9 @@ namespace Ex01_05
         {
             bool isAllNums = true;
 
-            for(int i = 0; i < i_str.Length; i++)
+            for (int i = 0; i < i_str.Length; i++)
             {
-                if(!char.IsDigit(i_str[i]))
+                if (!char.IsDigit(i_str[i]))
                 {
                     isAllNums = false;
                     break;

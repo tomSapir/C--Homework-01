@@ -13,30 +13,30 @@ namespace Ex01_o3
         static void Main()
         {
             int sandClockHeight = readHeightFromUser();
-            convertHeightToOddIfNeed(ref inputHeightInt);
-            Ex01_02.Program.PrintSandClock(inputHeightInt, inputHeightInt, 0);
+
+            convertHeightToOddIfNeed(ref sandClockHeight);
+            Ex01_02.Program.PrintSandClock(sandClockHeight, sandClockHeight, 0);
         }
 
         private static bool checkIfInputIsValid(string i_InputHeight)
         {
             int n;
             bool isNumeric = int.TryParse( i_InputHeight, out n);
-            bool isValid = (isNumeric && (i_InputHeight[0] != '-'));
+            bool isValid = isNumeric && (i_InputHeight[0] != '-');
 
             return isValid;
         }
 
         private static int readHeightFromUser()
         {
-            Console.WriteLine("Please enter the height of the sand clock: ");
-            String inputHeightAsString = "";
+            String inputHeightAsString = string.Empty;
             int inputHeightAsInt;
             bool inputIsValid = false;
 
+            Console.WriteLine("Please enter the height of the sand clock: ");
             while (!inputIsValid)
             {
                 inputHeightAsString = Console.ReadLine();
-
                 if (checkIfInputIsValid(inputHeightAsString))
                 {
                     inputIsValid = true;
@@ -47,7 +47,7 @@ namespace Ex01_o3
                 }
             }
 
-            inputHeightInt = int.Parse(inputHeightStr);
+            inputHeightAsInt = int.Parse(inputHeightAsString);
 
             return inputHeightAsInt;
         }

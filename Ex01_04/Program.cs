@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Ex01_01;
 
 namespace Ex01_04
 {
@@ -16,7 +10,6 @@ namespace Ex01_04
             int amountOfSmallLetters;
 
             inputStr = readString();
-
             if (Ex01_01.Program.CheckIfStrIsPalindrom(inputStr))
             {
                 Console.WriteLine("The string is palindrom.");
@@ -26,7 +19,7 @@ namespace Ex01_04
                 Console.WriteLine("The string is not palindrom.");
             }
 
-            if(checkIfStrIsNum(inputStr))
+            if (checkIfStrIsNum(inputStr))
             {
                 if (checkIfDevideBy3(inputStr))
                 {
@@ -38,7 +31,7 @@ namespace Ex01_04
                 }
             }
 
-            if(checkIfStringContainsOnlyEnglishLetters(inputStr))
+            if (checkIfStringContainsOnlyEnglishLetters(inputStr))
             {
                 amountOfSmallLetters = calAmountOfLowercaseLetters(inputStr);
                 Console.WriteLine("The amount of small letters in the string: " + amountOfSmallLetters);
@@ -48,7 +41,7 @@ namespace Ex01_04
         private static string readString()
         {
             bool strIsValid = false;
-            string inputStr = "";
+            string inputStr = String.Empty;
 
             Console.WriteLine("Please enter 8 digit string: ");
             while (!strIsValid)
@@ -95,11 +88,13 @@ namespace Ex01_04
         private static bool checkIfStringContainsOnlyDigits(string i_InputStr)
         {
             bool isStringContainsOnlyDigits = true;
+
             for (int i = 0; i < i_InputStr.Length; i++)
             {
-                if (!char.IsDigit(i_InputStr[i]))
+                if (char.IsDigit(i_InputStr[i]) == false)
                 {
                     isStringContainsOnlyDigits = false;
+                    break;
                 }
             }
 
@@ -110,9 +105,9 @@ namespace Ex01_04
         {
             bool isNum = true;
 
-            for(int i = 0; i < i_InputStr.Length; i++)
+            for (int i = 0; i < i_InputStr.Length; i++)
             {
-                if(i_InputStr[i] < '0' || i_InputStr[i] > '9')
+                if (char.IsDigit(i_InputStr[i]) == false)
                 {
                     isNum = false;
                     break;

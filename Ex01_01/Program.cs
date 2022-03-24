@@ -22,16 +22,10 @@
             minNum = findMin(decNumAsInt1, decNumAsInt2, decNumAsInt3);
             maxNum = findMax(decNumAsInt1, decNumAsInt2, decNumAsInt3);
             calAvgZerosAndAvgOnes(binNumAsStr1, binNumAsStr2, binNumAsStr3, out avgZeros, out avgOnes);
-            printInputStats(
-                decNumAsStr1,
-                decNumAsStr2,
-                decNumAsStr3,
-                avgZeros,
-                avgOnes,
-                amountOfNumsThatPowOf2,
-                amountOfNumsThatPalindroms,
-                minNum,
-                maxNum);
+            printInputStats(decNumAsStr1, decNumAsStr2, decNumAsStr3, 
+                avgZeros, avgOnes,
+                amountOfNumsThatPowOf2, amountOfNumsThatPalindroms,
+                minNum, maxNum);
         }
 
         public static bool CheckIfStrIsPalindrom(string i_String)
@@ -78,11 +72,9 @@
             bool currInputIsValid = true;
             
             o_CurrBinNum = string.Empty;
-            
             while (currInputIsValid)
             {
                 o_CurrBinNum = Console.ReadLine();
-
                 if (!checkIfInputIsValid(o_CurrBinNum))
                 {
                     Console.WriteLine("Incorrect input, please enter again the binary number: ");
@@ -109,13 +101,8 @@
             return isValid;
         }
 
-        private static void convertBinariesStringsToDecStrings(
-            string i_BinNumAsStr1,
-            string i_BinNumAsStr2,
-            string i_BinNumAsStr3,
-            out string o_DecNumAsStr1,
-            out string o_DecNumAsStr2,
-            out string o_DecNumAsStr3)
+        private static void convertBinariesStringsToDecStrings(string i_BinNumAsStr1, string i_BinNumAsStr2, string i_BinNumAsStr3,
+                                                               out string o_DecNumAsStr1, out string o_DecNumAsStr2, out string o_DecNumAsStr3)
         {
             o_DecNumAsStr1 = convertSingleBinaryStringToDecString(i_BinNumAsStr1);
             o_DecNumAsStr2 = convertSingleBinaryStringToDecString(i_BinNumAsStr2);
@@ -127,10 +114,11 @@
             int binNumAsInt = int.Parse(i_BinNumAsStr);
             int decNumAsInt = 0;
             int base1 = 1;
+            int reminder;
 
             while (binNumAsInt > 0)
             {
-                int reminder = binNumAsInt % 10;
+                reminder = binNumAsInt % 10;
                 binNumAsInt = binNumAsInt / 10;
                 decNumAsInt += reminder * base1;
                 base1 = base1 * 2;
@@ -141,11 +129,11 @@
             return decNumAsStr;
         }
 
-        private static void calAvgZerosAndAvgOnes(string i_BinNumAsStr1, string i_BinNumAsStr2, string i_BinNumAsStr3, out int o_AvgZeros, out int o_AvgOnes)
+        private static void calAvgZerosAndAvgOnes(string i_BinNumAsStr1, string i_BinNumAsStr2,
+                                                  string i_BinNumAsStr3, out int o_AvgZeros, out int o_AvgOnes)
         {
             o_AvgZeros = 0;
             o_AvgOnes = 0;
-
             o_AvgZeros += calAmountOfZerosInString(i_BinNumAsStr1);
             o_AvgZeros += calAmountOfZerosInString(i_BinNumAsStr2);
             o_AvgZeros += calAmountOfZerosInString(i_BinNumAsStr3);
@@ -225,7 +213,8 @@
             return isPowOf2;
         }
 
-        private static int calAmountOfPalindromNumbers(string i_DecNumAsStr1, string i_DecNumAsStr2, string i_DecNumAsStr3)
+        private static int calAmountOfPalindromNumbers(string i_DecNumAsStr1, string i_DecNumAsStr2,
+                                                       string i_DecNumAsStr3)
         {
             int amountOfPalindroms = 0;
 
@@ -281,16 +270,10 @@
             return min;
         }
 
-        private static void printInputStats(
-            string i_DecNumAsStr1,
-            string i_DecNumAsStr2,
-            string i_DecNumAsStr3,
-            int i_AvgZeros,
-            int i_AvgOnes,
-            int i_AmountOfNumbThatPowOf2, 
-            int i_AmountOfNumbersThatPalindroms,
-            int i_MinNumber,
-            int i_MaxNumber)
+        private static void printInputStats(string i_DecNumAsStr1, string i_DecNumAsStr2, string i_DecNumAsStr3,
+                                            int i_AvgZeros, int i_AvgOnes,
+                                            int i_AmountOfNumbThatPowOf2, int i_AmountOfNumbersThatPalindroms,
+                                            int i_MinNumber, int i_MaxNumber)
         {
             StringBuilder stringBuilder = new StringBuilder();
 
