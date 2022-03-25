@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Ex01_01
 {
     public class Program
     {
-        static void Main()
+        public static void Main()
         {
             string binNumAsStr1, binNumAsStr2, binNumAsStr3;
             string decNumAsStr1, decNumAsStr2, decNumAsStr3;
