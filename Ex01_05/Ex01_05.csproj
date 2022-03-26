@@ -4,13 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{09005D28-4E98-44FE-92B9-8905DD1C9BD9}</ProjectGuid>
+    <ProjectGuid>{304D9717-BEF3-491C-B8BB-4BFD005A9CEA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ex01_o3</RootNamespace>
-    <AssemblyName>Ex01_o3</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <RootNamespace>Ex01_05</RootNamespace>
+    <AssemblyName>Ex01_05</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -33,16 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Program.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ex01_02\Ex01_02.csproj">
-      <Project>{ebf08123-31e3-4d14-ab78-94e664be8c24}</Project>
-      <Name>Ex01_02</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

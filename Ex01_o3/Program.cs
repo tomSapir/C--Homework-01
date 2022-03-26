@@ -8,20 +8,36 @@ using Ex01_02;
 
 namespace Ex01_o3
 {
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            Console.WriteLine("Please enter the height of the sand clock: ");
-            String inputHeightStr = "";
-            int inputHeightInt;
+            int sandClockHeight = readHeightFromUser();
+
+            convertHeightToOddIfNeed(ref sandClockHeight);
+            Ex01_02.Program.PrintSandClock(sandClockHeight, sandClockHeight, 0);
+        }
+
+        private static bool checkIfInputIsValid(string i_InputHeight)
+        {
+            int n;
+            bool isNumeric = int.TryParse(i_InputHeight, out n);
+            bool isValid = isNumeric && (i_InputHeight[0] != '-');
+
+            return isValid;
+        }
+
+        private static int readHeightFromUser()
+        {
+            string inputHeightAsString = string.Empty;
+            int inputHeightAsInt;
             bool inputIsValid = false;
 
-            while(!inputIsValid)
+            Console.WriteLine("Please enter the height of the sand clock: ");
+            while (!inputIsValid)
             {
-                inputHeightStr = Console.ReadLine();
-
-                if(checkIfInputIsValid(inputHeightStr))
+                inputHeightAsString = Console.ReadLine();
+                if (checkIfInputIsValid(inputHeightAsString))
                 {
                     inputIsValid = true;
                 }
@@ -31,18 +47,9 @@ namespace Ex01_o3
                 }
             }
 
-            inputHeightInt = int.Parse(inputHeightStr);
-            convertHeightToOddIfNeed(ref inputHeightInt);
-            Ex01_02.Program.PrintSandClock(inputHeightInt, inputHeightInt, 0);
-        }
+            inputHeightAsInt = int.Parse(inputHeightAsString);
 
-        private static bool checkIfInputIsValid(string i_InputHeight)
-        {
-            int n;
-            bool isNumeric = int.TryParse( i_InputHeight, out n);
-            bool isValid = (isNumeric && (i_InputHeight[0] != '-'));
-
-            return isValid;
+            return inputHeightAsInt;
         }
 
         private static void convertHeightToOddIfNeed(ref int io_Height)
@@ -52,9 +59,10 @@ namespace Ex01_o3
                 io_Height++;
             }
         }
+
         private static bool checkNumberIfEven(int i_Num)
         {
-            bool isEven = ((i_Num % 2) == 0);
+            bool isEven = (i_Num % 2) == 0;
 
             return isEven;
         }

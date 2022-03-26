@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EBF08123-31E3-4D14-AB78-94E664BE8C24}</ProjectGuid>
+    <ProjectGuid>{09005D28-4E98-44FE-92B9-8905DD1C9BD9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ex01_02</RootNamespace>
-    <AssemblyName>Ex01_02</AssemblyName>
+    <RootNamespace>Ex01_o3</RootNamespace>
+    <AssemblyName>Ex01_o3</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -38,6 +38,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ex01_02\Ex01_02.csproj">
+      <Project>{ebf08123-31e3-4d14-ab78-94e664be8c24}</Project>
+      <Name>Ex01_02</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
